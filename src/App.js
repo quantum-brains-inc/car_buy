@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import './App.css';
 import firebase from './Firebase';
 import Navbar from './components/Navbar';
+import Header from './components/Header';
 
 class App extends Component {
   constructor(props) {
@@ -38,6 +39,7 @@ class App extends Component {
   render() {
     return <div>
       <Navbar/>
+      <Header/>
     <div class="container">
         <div class="panel panel-default">
           <div class="panel-heading">
