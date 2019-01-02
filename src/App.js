@@ -87,8 +87,6 @@ class App extends Component {
                     </li>
                     }
                     </ul>
-
-
             <ul class="nav navbar-nav navbar-right">
               < li > {
                   this.state.user ?
@@ -103,8 +101,6 @@ class App extends Component {
                 }
               </li>
             </ul>
-
-
                 </div>
             </div>
                 </nav>
