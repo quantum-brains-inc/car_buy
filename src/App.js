@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import './App.css';
-import firebase , { auth, provider } from './Firebase';
+import firebase , { auth, google_provider,facebook_provider } from './Firebase';
 import Navbar from './components/Navbar';
 import Header from './components/Header';
 
@@ -48,7 +48,16 @@ class App extends Component {
   }
   
     login() {
-      auth.signInWithPopup(provider) 
+      auth.signInWithPopup(google_provider)
+        .then((result) => {
+          const user = result.user;
+          this.setState({
+            user
+          });
+        });
+    }
+    login_f() {
+      auth.signInWithPopup(facebook_provider)
         .then((result) => {
           const user = result.user;
           this.setState({
@@ -84,6 +93,15 @@ class App extends Component {
                     :
                     <li class="nav-item">
                         <a class="nav-link" onClick={this.login} href="#">Log In</a>
+                    </li>
+                    }
+                    {this.state.user ?
+                    <li class="nav-item">
+                        <a class="nav-link" onClick={this.logout} href="">Log Out</a>
+                    </li>
+                    :
+                    <li class="nav-item">
+                        <a class="nav-link" onClick={this.login_f} href="">Log In(facebook)</a>
                     </li>
                     }
                     </ul>
