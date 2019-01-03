@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import firebase from '../Firebase';
+import {storage} from '../Firebase';
 import { Link } from 'react-router-dom';
 
 class Create extends Component {
-
   constructor() {
     super();
     this.ref = firebase.firestore().collection('boards');
@@ -12,8 +12,12 @@ class Create extends Component {
       title: '',
       description: '',
       author: '',
-      selectedFile: ''
+      image:'null',
+      url:'',
+      progress:0
     };
+    this.fileselectedHnadler = this.fileselectedHnadler.bind(this);
+    this.fileUploadHandler = this.fileUploadHandler.bind(this);
   }
   onChange = (e) => {
     const state = this.state
@@ -21,33 +25,56 @@ class Create extends Component {
     this.setState(state);
   }
 
-  onSubmit = (e) => {
-    e.preventDefault();
+              onSubmit = (e) => {
+                e.preventDefault();
 
-    const { title, description, author } = this.state;
+                const { title, description, author, url } = this.state;
 
-    this.ref.add({
-      title,
-      description,
-      author
-    }).then((docRef) => {
-      this.setState({
-        title: '',
-        description: '',
-        author: ''
-      });
-      this.props.history.push("/")
-    })
-    .catch((error) => {
-      console.error("Error adding document: ", error);
-    });
-  }
-    fileselectedHnadler = event => {
-      this.setState({
-        selectedFile: 'event.target.files[0]'
-      })
+                this.ref.add({
+                  title,
+                  description,
+                  author,
+                  url
+                }).then((docRef) => {
+                  this.setState({
+                    title: '',
+                    description: '',
+                    author: '',
+                    url: ''
+                  });
+                  this.props.history.push("/")
+                })
+                .catch((error) => {
+                  console.error("Error adding document: ", error);
+                });
+              }
+    fileselectedHnadler = e => {
+      if(e.target.files[0]){
+        const image = e.target.files[0];
+        this.setState(() => ({image}));
+      }
     }
     fileUploadHandler = () => {
+      const {image} = this.state;
+      const uploadTask = storage.ref(`images/${image.name}`).put(image);
+      uploadTask.on('state_changed', 
+      (snapshot) => {
+        const progress = Math.round((snapshot.bytesTransferred / snapshot.totalBytes)*100);
+        this.setState({progress})
+      }
+      ,
+      (error) => {
+        console.log(error);
+      }
+      ,
+      () => {
+        storage.ref('images').child(image.name).getDownloadURL().then(url =>{
+          console.log(url);
+          this.setState({url})
+        } )
+      }
+      );
+
 
     }
   render() {
@@ -78,8 +105,10 @@ class Create extends Component {
               <div class="form-group">
                 <label for="author">Image:</label>
                 <input type="file" class="form-control" name="image" onChange={this.fileselectedHnadler}/>
+                <progress value={this.state.progress} max="100"/>
+                <a onClick={this.fileUploadHandler} href="#">Upload</a>
               </div>
-              <button onClick={this.fileUploadHandler} type="submit" class="btn btn-success">Envoyer</button>
+              <button type="submit" class="btn btn-success">Envoyer</button>
             </form>
           </div>
         </div>

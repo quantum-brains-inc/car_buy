@@ -12,10 +12,9 @@ const config = {
     messagingSenderId: "471381749460"
 };
 firebase.initializeApp(config);
-
 firebase.firestore().settings(settings);
 
-
+export const storage = firebase.storage();
 export const google_provider = new firebase.auth.GoogleAuthProvider();
 export const facebook_provider = new firebase.auth.FacebookAuthProvider();
 export const auth = firebase.auth();

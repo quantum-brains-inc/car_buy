@@ -22,13 +22,14 @@ class App extends Component {
   onCollectionUpdate = (querySnapshot) => {
     const boards = [];
     querySnapshot.forEach((doc) => {
-      const { title, description, author } = doc.data();
+      const { title, description, author,url } = doc.data();
       boards.push({
         key: doc.id,
         doc, 
         title,
         description,
         author,
+        url
       });
     });
     this.setState({
@@ -138,7 +139,8 @@ class App extends Component {
             {this.state.boards.map(board => 
           <div class="col-4">
             <div class="card">
-                <img class="card-img-top" src="https://success.md/images/CARS/dacia_logan/dacia-1.jpg" alt="Card image cap" />
+                <img class="card-img-top" src={`${board.url}`} alt="Card image cap" />
+                {console.log(board.url)}
                 <div class="card-body">
                   <div>
                     <h5 class="card-title">
