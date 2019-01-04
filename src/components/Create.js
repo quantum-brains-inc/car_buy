@@ -134,7 +134,7 @@ class Create extends Component {
                 this.state.progress == 100 ?
                 <button type="submit" class="btn btn-success">Envoyer</button>
                 :
-                <p>Choose image the click upload to post</p>
+                <p>Choose image then click upload to post</p>
                 }
             </form>
           </div>
