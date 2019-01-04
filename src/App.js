@@ -4,7 +4,6 @@ import './App.css';
 import firebase , { auth, google_provider,facebook_provider } from './Firebase';
 import Navbar from './components/Navbar';
 import Header from './components/Header';
-
 class App extends Component {
   constructor(props) {
     super(props);
@@ -12,7 +11,8 @@ class App extends Component {
     this.unsubscribe = null;
     this.state = {
       boards: [],
-      user: false
+      user: false,
+      test:"hello from app comp"
     };
 
     this.login = this.login.bind(this); 
@@ -78,53 +78,7 @@ class App extends Component {
     }
   render() {
     return <div>
-      < nav class = "navbar navbar-expand-lg navbar-light bg-light navbar-fixed-top" >
-        <div  class="container">
-                <a class="navbar-brand" href="#">Annonce Auto</a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarText">
-                    <ul class="navbar-nav mr-auto">
-                    <li class="nav-item active">
-                        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-                    </li>
-                    {this.state.user ?
-                    <li class="nav-item">
-                        <a class="nav-link" onClick={this.logout} href="#">Log Out</a>
-                    </li>
-                    :
-                    <li class="nav-item">
-                        <a class="nav-link" onClick={this.login} href="#">Log In</a>
-                    </li>
-                    }
-                    {this.state.user ?
-                    <li class="nav-item">
-                        <a class="nav-link" onClick={this.logout} href="">Log Out</a>
-                    </li>
-                    :
-                    <li class="nav-item">
-                        <a class="nav-link" onClick={this.login_f} href="">Log In(facebook)</a>
-                    </li>
-                    }
-                    </ul>
-            <ul class="nav navbar-nav navbar-right">
-              < li > {
-                  this.state.user ?
-                <div class="inset">
-                  < img src = {this.state.user.photoURL}></img>
-                  <p>{this.state.user.displayName}</p>
-                </div>
-                :
-                <div class="inset">
-                  <p>Not logged in</p>
-                </div>
-                }
-              </li>
-            </ul>
-                </div>
-            </div>
-                </nav>
+      <Navbar {...this.state } action={this.logout} login={this.login}/>
       <Header/>
     <div class="container">
         <div class="panel panel-default">
