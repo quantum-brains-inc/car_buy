@@ -13,6 +13,7 @@ class Create extends Component {
       description: '',
       author: '',
       price:'',
+      ville:'',
       image:'null',
       url:'',
       progress:0
@@ -29,21 +30,23 @@ class Create extends Component {
               onSubmit = (e) => {
                 e.preventDefault();
 
-                const { title, description, author, url,price } = this.state;
+                const { title, description, author, url,price, ville } = this.state;
 
                 this.ref.add({
                   title,
                   description,
                   author,
                   url,
-                  price
+                  price,
+                  ville
                 }).then((docRef) => {
                   this.setState({
                     title: '',
                     description: '',
                     author: '',
                     price:'',
-                    url: ''
+                    url: '',
+                    ville
                   });
                   this.props.history.push("/")
                 })
@@ -81,7 +84,7 @@ class Create extends Component {
 
     }
   render() {
-    const { title, description, author,price } = this.state;
+    const { title, description, author,price,ville } = this.state;
     return (
       <div class="container">
         <div class="panel panel-default">
@@ -104,6 +107,17 @@ class Create extends Component {
               <div class="form-group">
                 <label for="author">Auteur:</label>
                 <input type="text" class="form-control" name="author" value={author} onChange={this.onChange} placeholder="Auteur" />
+              </div>
+              <div class="form-group">
+                <label for="author">Ville:</label>
+              <select  type="text" class="form-control" name="ville" value={ville} onChange={this.onChange}>
+                <option value="Agadir">Agadir</option>
+                <option value="Béni Mellal">Béni Mellal</option>
+                <option value="Casablanca">Casablanca</option>
+                <option value="El Jadida">El Jadida</option>
+                <option value="Fès">Fès</option>
+                <option value="Kénitra">Kénitra</option>
+              </select>
               </div>
               <div class="form-group">
                 <label for="author">Prix:</label>
