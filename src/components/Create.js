@@ -129,7 +129,13 @@ class Create extends Component {
                 <progress value={this.state.progress} max="100"/>
                 <a onClick={this.fileUploadHandler} href="#">Upload</a>
               </div>
-              <button type="submit" class="btn btn-success">Envoyer</button>
+
+              {
+                this.state.progress == 100 ?
+                <button type="submit" class="btn btn-success">Envoyer</button>
+                :
+                <p>Choose image the click upload to post</p>
+                }
             </form>
           </div>
         </div>
