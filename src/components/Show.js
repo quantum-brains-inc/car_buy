@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import firebase from '../Firebase';
 import { Link } from 'react-router-dom';
+import {TwitterShareButton} from 'react-share';
 
 class Show extends Component {
 
@@ -35,7 +36,6 @@ class Show extends Component {
       console.error("Error removing document: ", error);
     });
   }
-
   render() {
     return (
       <div class="container">
@@ -56,6 +56,7 @@ class Show extends Component {
             </dl>
             <Link to={`/edit/${this.state.key}`} class="btn btn-success">Modifier</Link>&nbsp;
             <button onClick={this.delete.bind(this, this.state.key)} class="btn btn-danger">Suprim</button>
+            <TwitterShareButton url={`https://nifty-leakey-3ccdce.netlify.com/show/${this.props.match.params.id}`}>Share on Twitter</TwitterShareButton>
           </div>
         </div>
       </div>

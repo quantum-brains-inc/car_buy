@@ -8,6 +8,7 @@ import App from './App';
 import Edit from './components/Edit';
 import Create from './components/Create';
 import Show from './components/Show';
+import Signup from './components/signup'
 
 
 ReactDOM.render(
@@ -17,6 +18,7 @@ ReactDOM.render(
         <Route path='/edit/:id' component={Edit} />
         <Route path='/create' component={Create} />
         <Route path='/show/:id' component={Show} />
+        <Route exact path="/signup" component={Signup} />
       </div>
   </Router>,
   document.getElementById('root')
