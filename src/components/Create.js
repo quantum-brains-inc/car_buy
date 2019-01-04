@@ -12,6 +12,7 @@ class Create extends Component {
       title: '',
       description: '',
       author: '',
+      price:'',
       image:'null',
       url:'',
       progress:0
@@ -28,18 +29,20 @@ class Create extends Component {
               onSubmit = (e) => {
                 e.preventDefault();
 
-                const { title, description, author, url } = this.state;
+                const { title, description, author, url,price } = this.state;
 
                 this.ref.add({
                   title,
                   description,
                   author,
-                  url
+                  url,
+                  price
                 }).then((docRef) => {
                   this.setState({
                     title: '',
                     description: '',
                     author: '',
+                    price:'',
                     url: ''
                   });
                   this.props.history.push("/")
@@ -78,7 +81,7 @@ class Create extends Component {
 
     }
   render() {
-    const { title, description, author } = this.state;
+    const { title, description, author,price } = this.state;
     return (
       <div class="container">
         <div class="panel panel-default">
@@ -101,6 +104,10 @@ class Create extends Component {
               <div class="form-group">
                 <label for="author">Auteur:</label>
                 <input type="text" class="form-control" name="author" value={author} onChange={this.onChange} placeholder="Auteur" />
+              </div>
+              <div class="form-group">
+                <label for="author">Prix:</label>
+                <input type="number" class="form-control" name="price" value={price} onChange={this.onChange} placeholder="prix" />
               </div>
               <div class="form-group">
                 <label for="author">Image:</label>

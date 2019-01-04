@@ -22,14 +22,15 @@ class App extends Component {
   onCollectionUpdate = (querySnapshot) => {
     const boards = [];
     querySnapshot.forEach((doc) => {
-      const { title, description, author,url } = doc.data();
+      const { title, description, author,url,price } = doc.data();
       boards.push({
         key: doc.id,
         doc, 
         title,
         description,
         author,
-        url
+        url,
+        price
       });
     });
     this.setState({
@@ -147,6 +148,7 @@ class App extends Component {
                      {board.title}
                     </h5>
                     <p class="card-text">{board.description}</p>
+                    <p class="card-text">Prix: {board.price} DH</p>
                     <a href="#" class="btn btn-primary">
                       <Link to={`/show/${board.key}`}>More</Link>
                     </a>
