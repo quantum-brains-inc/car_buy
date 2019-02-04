@@ -5,7 +5,7 @@ export default function Footer() {
                 <div className="footer-main">
                     <div class="container">
             <div class="row">
-                <div class="col-sm footer-container">
+                <div class="col-sm footer-container logo-footer">
                 Tonobila.ma
                 </div>
                 <div class="col-sm footer-container">

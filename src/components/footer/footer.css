@@ -13,3 +13,10 @@
 .footer-last {
     text-align: center;
 }
+.logo-footer {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    color: white !important;
+    font-weight: 700;
+    font-size: 2rem;
+    font-style: italic;
+}
