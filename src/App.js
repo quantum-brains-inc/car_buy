@@ -5,6 +5,8 @@ import firebase , { auth, google_provider,facebook_provider } from './Firebase';
 import Navbary from './components/Navbar';
 import Header from './components/Header';
 import Search from './components/search';
+import Footer from './components/footer';
+
 
 class App extends Component {
   constructor(props) {
@@ -118,6 +120,7 @@ class App extends Component {
           )}
         </div>
       </div>
+      <Footer/>
       </div>;
   }
 }

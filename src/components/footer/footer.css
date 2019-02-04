@@ -1,0 +1,15 @@
+.footer-main{
+    height: 40vh;
+    background-color: #363636;
+    color: white;
+}
+
+.footer-container {
+    margin-top: 5rem !important;
+}
+.list-footer{
+    list-style: none;
+}
+.footer-last {
+    text-align: center;
+}
