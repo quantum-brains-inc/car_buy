@@ -1,0 +1,38 @@
+.Home {
+    background-image: url('../pexels-photo-769892.jpg');
+    height: 90vh;
+    background-size: cover;
+    z-index: -99999;
+    background-attachment: fixed;
+}
+.text-header>p{
+    padding-top: 12rem;
+    color: white;
+    padding-left: 7rem;
+    font-size: 3rem;
+}
+.text-dummy>p{
+    color: white;
+    padding-left: 7rem;
+}
+.annonce-hover{
+    width: 20rem;
+    height: 7rem;
+    padding: 2rem;
+    background-color: white;
+    z-index: 1;
+    margin-left: 60rem;
+    margin-top: -10rem;
+    font-size: 0.8rem;
+    position: relative;
+}
+.annonce-hover:after{
+    content: "";
+    position:absolute;
+    width: 30px;
+    height: 30px;
+    background-color: white;
+    transform: rotate(45deg);
+    top:6px;
+    left: -7px;
+}

@@ -1,23 +1,49 @@
 import React, { Component } from 'react';
+import styled from 'styled-components';
+import Navbar from 'react-bootstrap/Navbar';
+import './Navbar.css';
 
 
-class Navbar extends Component {
+const StyledNavbar = styled(Navbar)
+`
+    color: white;
+    background:transparent;
+    position:fixed;
+	font-size: 1em;
+	margin: 1em;
+	padding: 0.25em 1em;
+    border-radius: 3px;
+    margin-bottom:0;
+    width:100%;
+`;
+class Navbary extends Component {
     constructor(props){
         super(props);
     }
     render() {
         return (
-            <div>
-                <nav class = "navbar navbar-expand-lg navbar-light bg-light navbar-fixed-top" >
+            <div >
+                <StyledNavbar className = "navbar navbar-expand-lg  transparent" >
         <div  class="container">
-                <a class="navbar-brand" href="#">Annonce Auto</a>
+                <a class="navbar-brand" href="#">Tonobila.</a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarText">
                     <ul class="navbar-nav mr-auto">
                     <li class="nav-item active">
-                        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                        <a class="nav-link" href="#">ACCUEIL<span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item active">
+                    <a class="nav-link" href="#">ANNONCES<span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item active">
+                     < a class = "nav-link"
+                        href = "#" > MAGAZINE < span class = "sr-only" > (current) < /span></a > 
+                    </li>
+                    <li class="nav-item active">
+                     < a class = "nav-link"
+                        href = "#" > CONTACTEZ NOUS <span class = "sr-only" > (current) </span></a>
                     </li>
                     {
                         this.props.user ?
@@ -26,7 +52,7 @@ class Navbar extends Component {
                     </li>
                     :
                     <li class="nav-item">
-                        <a class="nav-link"  onClick={this.props.login} href="#">Log In</a>
+                        <a class="nav-link"  href="#"></a>
                     </li>
                     }
                    {
@@ -36,7 +62,7 @@ class Navbar extends Component {
                     </li>
                     :
                     <li class="nav-item">
-                        <a class="nav-link"  href="">not logged in</a>
+                        <a class="nav-link"  href=""></a>
                     </li>
                    }
                     </ul>
@@ -48,18 +74,18 @@ class Navbar extends Component {
                   <p>{this.props.user.displayName}</p>
                 </div>
                 :
-                <div class="inset">
-                  <p>Not logged in</p>
+                <div>
+                  <p onClick={this.props.login}>Inscription</p>
                 </div>
                 }
               </li>
             </ul>
                 </div>
             </div>
-                </nav>
+                </StyledNavbar>
             </div>
         );
     }
 }
 
-export default Navbar;
+export default Navbary;

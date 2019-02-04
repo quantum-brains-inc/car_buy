@@ -1,0 +1,24 @@
+.navbar-right {
+    background-color: #ffc13d;
+    width: 10rem;
+    color: black;
+    text-align: center;
+    cursor: pointer !important;
+}
+.navbar-right>p{
+    text-align: center;
+    
+}
+.nav-link{
+    color:#282828 !important;
+}
+#navbarText{
+    margin-left: 10rem;
+}
+.navbar-brand{
+    color: white !important;
+    font-weight: 700;
+    font-size: 2rem;
+    font-style: italic;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}

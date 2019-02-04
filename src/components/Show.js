@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import firebase from '../Firebase';
 import { Link } from 'react-router-dom';
 import {TwitterShareButton} from 'react-share';
-
+import Navbar from './Navbar';
 class Show extends Component {
 
   constructor(props) {
@@ -38,6 +38,8 @@ class Show extends Component {
   }
   render() {
     return (
+      <div>
+      <Navbar/>
       <div class="container">
         <div class="panel panel-default">
           <div class="panel-heading">
@@ -59,6 +61,7 @@ class Show extends Component {
             <TwitterShareButton url={`https://nifty-leakey-3ccdce.netlify.com/show/${this.props.match.params.id}`}>Share on Twitter</TwitterShareButton>
           </div>
         </div>
+      </div>
       </div>
     );
   }

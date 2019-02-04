@@ -2,8 +2,10 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import './App.css';
 import firebase , { auth, google_provider,facebook_provider } from './Firebase';
-import Navbar from './components/Navbar';
+import Navbary from './components/Navbar';
 import Header from './components/Header';
+import Search from './components/search';
+
 class App extends Component {
   constructor(props) {
     super(props);
@@ -78,8 +80,9 @@ class App extends Component {
     }
   render() {
     return <div>
-      <Navbar {...this.state } action={this.logout} login={this.login}/>
+      <Navbary {...this.state } action={this.logout} login={this.login}/>
       <Header/>
+      <Search/>
     <div class="container">
         <div class="panel panel-default">
           <div class="panel-heading">
@@ -96,7 +99,6 @@ class App extends Component {
           <div class="col-4">
             <div class="card">
                 <img class="card-img-top" src={`${board.url}`} alt="Card image cap" />
-                {console.log(board.url)}
                 <div class="card-body">
                   <div>
                     <h5 class="card-title">
