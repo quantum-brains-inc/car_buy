@@ -35,7 +35,7 @@ export default function Footer() {
                 </div>
             </div>
             <div className="footer-last">
-                <p>©2019 Tonobila.ma : Guide d'achat des voitures d'occasion et neuves au Maroc</p>
+                <p>©2020 Tonobila.ma : Guide d'achat des voitures d'occasion et neuves au Maroc</p>
                 </div>
             </div>
     </div>
